@@ -223,13 +223,6 @@ export function LuxuryNavbar() {
             <li
               key={item.href}
               data-collections-dropdown={item.label === "Collections" ? "" : undefined}
-              onMouseEnter={item.label === "Collections" ? () => setCollectionsOpen(true) : undefined}
-              onFocus={item.label === "Collections" ? () => setCollectionsOpen(true) : undefined}
-              onBlur={item.label === "Collections" ? (event) => {
-                if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
-                  setCollectionsOpen(false);
-                }
-              } : undefined}
             >
               {item.label === "Collections" ? (
                 <>
@@ -238,7 +231,7 @@ export function LuxuryNavbar() {
                     aria-expanded={collectionsOpen}
                     aria-haspopup="true"
                     aria-controls="collections-dropdown"
-                    onClick={() => setCollectionsOpen(true)}
+                    onClick={() => setCollectionsOpen((isOpen) => !isOpen)}
                     className="group flex items-center gap-1.5 py-2 font-serif text-[0.95rem] tracking-wide text-white/85 transition-colors hover:text-champagne"
                   >
                     {item.label}
