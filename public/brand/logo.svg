@@ -1,0 +1,7 @@
+<!-- PLACEHOLDER ONLY — replace with the original logo file (see README). Not a recreation of the brand mark. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" width="600" height="200">
+  <rect width="600" height="200" fill="#000"/>
+  <text x="300" y="78" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700" fill="#fff" letter-spacing="2">THE</text>
+  <text x="300" y="132" text-anchor="middle" font-family="'Snell Roundhand', 'Brush Script MT', cursive" font-size="56" fill="#fff">Presentation</text>
+  <text x="300" y="176" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700" fill="#fff" letter-spacing="2">COMPANY</text>
+</svg>

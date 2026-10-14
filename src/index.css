@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #000000;
+  --color-night: #070707;
+  --color-gold: #d6a64d;
+  --color-gold-deep: #a77528;
+  --color-champagne: #f7d985;
+  --color-muted: #aaa49c;
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Font faces loaded in index.html: Bree Serif (Google Fonts), Buffalo (CDNFonts). */
+:root {
+  --font-bree-serif: "Bree Serif", Georgia, serif;
+  --font-buffalo: "buffalo", "Great Vibes", cursive;
+}
+
+@theme inline {
+  --font-serif: var(--font-bree-serif), Georgia, serif;
+  --font-script: var(--font-buffalo), cursive;
+  --font-sans: var(--font-bree-serif), Georgia, serif;
+}
+
+:root {
+  --gold-gradient: linear-gradient(100deg, #a77528 0%, #d6a64d 22%, #f7d985 45%, #d6a64d 62%, #a77528 82%, #d6a64d 100%);
+  --nav-h: 80px;
+  color-scheme: dark;
+}
+
+html {
+  background: #070707;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  background: #070707;
+  color: #fff;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+section[id], [id].anchor { scroll-margin-top: calc(var(--nav-h) + 8px); }
+
+::selection { background: #d6a64d; color: #000; }
+
+:focus-visible {
+  outline: 2px solid #f7d985;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ——— Brand typography utilities ——— */
+@utility text-gold {
+  background-image: var(--gold-gradient);
+  background-size: 220% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+@utility shimmer {
+  animation: gold-shimmer 7s var(--ease-luxe) infinite;
+}
+@utility script-glow {
+  font-family: var(--font-script);
+  font-weight: 400;
+  color: #fff;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.9), 0 0 14px rgba(255, 255, 255, 0.45), 0 0 36px rgba(247, 217, 133, 0.22);
+}
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #d6a64d;
+}
+@utility bg-gold {
+  background-image: var(--gold-gradient);
+  background-size: 200% 100%;
+}
+@utility hairline {
+  background: linear-gradient(90deg, transparent, rgba(214, 166, 77, 0.7), transparent);
+  height: 1px;
+}
+
+@keyframes gold-shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ——— Marquee ——— */
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track { animation: marquee 38s linear infinite; }
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track { animation-play-state: paused; }
+
+/* ——— Grain for cinematic depth (pure CSS, no image request) ——— */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: radial-gradient(rgba(255,255,255,0.6) 0.5px, transparent 0.6px);
+  background-size: 3px 3px;
+  mix-blend-mode: overlay;
+}
+
+/* ——— Form controls ——— */
+.field {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(170, 164, 156, 0.4);
+  padding: 0.85rem 0 0.7rem;
+  color: #fff;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+  border-radius: 0;
+}
+.field::placeholder { color: rgba(170, 164, 156, 0.6); }
+.field:hover { border-bottom-color: rgba(214, 166, 77, 0.6); }
+.field:focus { outline: none; border-bottom-color: #f7d985; box-shadow: 0 1px 0 0 #f7d985; }
+.field[aria-invalid="true"] { border-bottom-color: #e07a5f; }
+select.field { appearance: none; background-image: linear-gradient(45deg, transparent 50%, #d6a64d 50%), linear-gradient(135deg, #d6a64d 50%, transparent 50%); background-position: calc(100% - 12px) 55%, calc(100% - 7px) 55%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 1.5rem; }
+select.field option { background: #0d0d0d; color: #fff; }
+input[type="date"].field::-webkit-calendar-picker-indicator { filter: invert(0.75) sepia(1) saturate(3) hue-rotate(5deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track, .shimmer { animation: none !important; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
+}

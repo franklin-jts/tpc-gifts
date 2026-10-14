@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Host: https://www.thepresentationcompany.in
+Sitemap: https://www.thepresentationcompany.in/sitemap.xml

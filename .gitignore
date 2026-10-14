@@ -1,0 +1,10 @@
+node_modules
+dist
+dist-ssr
+*.local
+.env
+.env.local
+.freebuff/
+*.log
+.DS_Store
+*.log
